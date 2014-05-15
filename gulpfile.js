@@ -45,5 +45,7 @@ gulp.task('jsdoc', function () {
 
 gulp.task('default', ['jshint', 'test', 'jsdoc']);
 
-gulp.watch(files.all, ['jshint', 'test']);
-gulp.watch(files.lib, ['jsdoc']);
+if (!process.env.TRAVIS) {
+  gulp.watch(files.all, ['jshint', 'test']);
+  gulp.watch(files.lib, ['jsdoc']);
+}
