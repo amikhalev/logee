@@ -33,4 +33,5 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', ['mochaTest:test']);
   grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('travis', ['test']);
 };
