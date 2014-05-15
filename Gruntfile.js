@@ -4,7 +4,7 @@ module.exports = function (grunt) {
   'use strict';
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-mocha-cov');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   var files = {
     lib: './lib/**/*.js',
@@ -20,24 +20,17 @@ module.exports = function (grunt) {
       },
       all: files.all
     },
-    mochacov: {
-      options: {
-        files: files.test
-      },
+    mochaTest: {
       test: {
         options: {
-          reporter: 'spec'
-        }
-      },
-      coverage: {
-        options: {
-          coveralls: true
-        }
+          reporter: 'spec',
+          require: ['should']
+        },
+        src: [files.test]
       }
     }
   });
 
-  grunt.registerTask('travis', ['mochacov:test', 'mochacov:coverage']);
-  grunt.registerTask('test', ['mochacov:test']);
+  grunt.registerTask('test', ['mochaTest:test']);
   grunt.registerTask('default', ['jshint', 'test']);
 };

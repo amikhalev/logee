@@ -37,7 +37,9 @@
   },
   "config": {
     "blanket": {
-      "pattern": ["./lib/**/*.js"]
+      "pattern": [
+        "./lib/**/*.js"
+      ]
     }
   },
   "license": "MIT"
